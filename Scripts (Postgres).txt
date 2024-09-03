@@ -1,0 +1,21 @@
+CREATE TABLE DatosSeguro(
+codSeguro serial not null,
+nombre varchar(100) not null,
+productoPermitido varchar(100)not null,
+codPlan int4 not null,
+nombreplan varchar(100)
+constraint PK_CODSEGURO primary key(codSeguro)
+);
+
+CREATE TABLE plan(
+codPlan serial not null,
+nombrePlan varchar(100) not null,
+cuotasPlan int not null,
+edadMinima int not null,
+edadMaxima int not null,
+idseguro int4 not null,
+constraint PKCODPLAN primary key (codPlan)
+);
+
+ ALTER TABLE plan ADD CONSTRAINT FK_SEGURO_PLAN FOREIGN KEY(idseguro)
+REFERENCES DatosSeguro (codSeguro)
